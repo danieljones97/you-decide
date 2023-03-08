@@ -65,7 +65,9 @@ struct FeedView: View {
                 }
                 .foregroundColor(Color.white)
                 .padding()
-                .fullScreenCover(isPresented: $showNewPollView) {
+                .fullScreenCover(isPresented: $showNewPollView, onDismiss: {
+                    viewModel.fetchPolls()
+                }) {
                     NewPollView()
                 }
 
