@@ -43,7 +43,8 @@ struct FindFriendsView: View {
                     
                     ForEach(viewModel.searchedUsers) { user in
                         NavigationLink {
-//                            ProfileView(user)
+                            ProfileView(user: user)
+                                .navigationBarHidden(true)
                         } label: {
                             UserRowView(user: user)
                         }

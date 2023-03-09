@@ -11,6 +11,7 @@ struct FeedView: View {
     
     @State private var showNewPollView = false
     @ObservedObject var viewModel = FeedViewModel()
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         VStack {
@@ -31,8 +32,10 @@ struct FeedView: View {
                 Spacer()
                 
                 NavigationLink {
-                    ProfileView()
-                        .navigationBarHidden(true)
+                    if let user = authViewModel.currentUser {
+                        ProfileView(user: user)
+                            .navigationBarHidden(true)
+                    }
                 } label: {
                     Image(systemName: "person.fill")
                         .padding(.trailing)

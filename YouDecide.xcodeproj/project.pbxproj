@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		921D7C65298951D8000F51D9 /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921D7C64298951D8000F51D9 /* RoundedShape.swift */; };
 		922BCC3B28F7415300989AEE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922BCC3A28F7415300989AEE /* ProfileView.swift */; };
+		922CB85029B94801009A57EC /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922CB84F29B94801009A57EC /* ProfileViewModel.swift */; };
 		922FB6FA2993DA8A00CB9851 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 922FB6F92993DA8A00CB9851 /* GoogleService-Info.plist */; };
 		922FB7082993DE8800CB9851 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922FB7072993DE8800CB9851 /* AuthViewModel.swift */; };
 		923003E529B0E36A0088C9DA /* NewPollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923003E429B0E36A0088C9DA /* NewPollView.swift */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		921D7C64298951D8000F51D9 /* RoundedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
 		922BCC3A28F7415300989AEE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		922CB84F29B94801009A57EC /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		922FB6F92993DA8A00CB9851 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		922FB7072993DE8800CB9851 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		923003E429B0E36A0088C9DA /* NewPollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPollView.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				927A6AAE29B5602C00300624 /* NewPollViewModel.swift */,
 				927A6AB229B5657F00300624 /* FeedViewModel.swift */,
 				92FA266329B8BAA7000D22EC /* PollViewModel.swift */,
+				922CB84F29B94801009A57EC /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				92F5DEC4299D8FCD007A7EA5 /* ImageUploader.swift in Sources */,
 				927A6AAF29B5602C00300624 /* NewPollViewModel.swift in Sources */,
 				925D798028DF59020085C5F6 /* PollView.swift in Sources */,
+				922CB85029B94801009A57EC /* ProfileViewModel.swift in Sources */,
 				9260B0F929AE375800BE84E5 /* FindFriendsViewModel.swift in Sources */,
 				92443167299D13DB00616544 /* ImagePicker.swift in Sources */,
 				9260B0FD29AE390300BE84E5 /* UserRowView.swift in Sources */,
