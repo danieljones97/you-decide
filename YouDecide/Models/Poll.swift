@@ -25,5 +25,27 @@ struct Poll: Identifiable, Decodable {
     }
     
     var user: User?
+    
+//    var service: PollService?
+//    var userService: UserService?
+//
+//    init() {
+//        self.service = PollService()
+//        self.userService = UserService()
+//    }
+    
+//    func fetchUserAndAnswers() {
+//        //Fetch answers
+//        let pollId = self.id
+//        self.service!.fetchAnswers(forPoll: pollId!) { answers in
+//            self.answers = answers
+//        }
+//
+//        //Fetch user
+//        let userId = self.userId
+//        self.userService!.fetchUser(withUid: userId) { user in
+//            self.user = user
+//        }
+//    }
 
 }

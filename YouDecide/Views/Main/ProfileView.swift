@@ -18,6 +18,8 @@ struct ProfileView: View {
     }
     
     var body: some View {
+        var firstName = viewModel.user.fullName.components(separatedBy: " ")[0]
+        
         VStack {
             VStack {
                 
@@ -83,8 +85,12 @@ struct ProfileView: View {
                 ZStack {
                     VStack {
                         
-                        Text("My Latest Polls").font(.title3)
+                        Text("\(firstName)'s Latest Polls").font(.title3)
                         Divider().background().frame(width: 150)
+                        ForEach(viewModel.polls) { poll in
+                            PollView(poll: poll)
+                                .padding(5)
+                        }
                         Spacer()
                         
                     }
