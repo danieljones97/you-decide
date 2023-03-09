@@ -34,10 +34,7 @@ class ProfileViewModel: ObservableObject {
                 }
                 
                 //Fetch user
-                let userId = polls[i].userId
-                self.userService.fetchUser(withUid: userId) { user in
-                    self.polls[i].user = user
-                }
+                self.polls[i].user = self.user
                 
             }
         }

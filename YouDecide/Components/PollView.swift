@@ -22,20 +22,27 @@ struct PollView: View {
             //Profile Info
             HStack {
                 if let user = viewModel.poll.user {
-                    KFImage(URL(string: user.profileImageUrl))
-                        .resizable()
-                        .scaledToFill()
-                        .clipShape(Circle())
-                        .frame(width: 40, height: 40)
                     
-                    HStack {
-                            Text(user.username)
-                                .padding(.leading)
-                            Spacer()
-                            Text("Date")
-                                .font(.footnote)
-                                .fontWeight(.light)
+                    NavigationLink {
+                        ProfileView(user: user)
+                            .navigationBarHidden(true)
+                    } label: {
+                        KFImage(URL(string: user.profileImageUrl))
+                            .resizable()
+                            .scaledToFill()
+                            .clipShape(Circle())
+                            .frame(width: 40, height: 40)
+                        
+                        HStack {
+                                Text(user.username)
+                                    .padding(.leading)
+                                Spacer()
+                                Text("Date")
+                                    .font(.footnote)
+                                    .fontWeight(.light)
+                        }
                     }
+                    
                 } else {
                     ProgressView()
                 }
