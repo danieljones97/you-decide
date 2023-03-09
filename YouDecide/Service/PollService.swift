@@ -47,42 +47,33 @@ struct PollService {
         
     }
     
+    func fetchAnswers(forPoll pollId: String, completion: @escaping([Answer]) -> Void) {
+        Firestore.firestore().collection("answers")
+            .whereField("pollId", isEqualTo: pollId)
+            .getDocuments { snapshot, _ in
+                
+            guard let documents = snapshot?.documents else { return }
+            
+            var answers = documents.compactMap({ try? $0.data(as: Answer.self )})
+            
+            completion(answers)
+            
+        }
+    }
+    
     func fetchPolls(completion: @escaping([Poll]) -> Void) {
         
-        Firestore.firestore().collection("polls").getDocuments { snapshot, _ in
+        Firestore.firestore().collection("polls")
+            .order(by: "timestamp", descending: true)
+            .getDocuments { snapshot, _ in
+                
             guard let documents = snapshot?.documents else { return }
             
             var polls = documents.compactMap({ try? $0.data(as: Poll.self )})
-            
+                
             completion(polls)
             
-            //DJTODO - This might not assign the variable correctly according got google, might need to do index
-            //Google error "Cannot assign to property is a let constant for loop"
-            
-            let dispatchGroup = DispatchGroup()
-            
-            for i in polls.indices {
-                dispatchGroup.enter()
-
-                Firestore.firestore().collection("answers").whereField("pollId", isEqualTo: polls[i].id)
-                    .getDocuments { snapshot, error in
-
-                        guard let answersDocuments = snapshot?.documents else { return }
-
-                        let answers = answersDocuments.compactMap({ try? $0.data(as: Answer.self)})
-
-                        polls[i].answers = answers
-
-                        dispatchGroup.leave()
-                    }
-            }
-
-            dispatchGroup.notify(queue: .main) {
-                completion(polls)
-            }
-            
         }
-
     }
     
 }

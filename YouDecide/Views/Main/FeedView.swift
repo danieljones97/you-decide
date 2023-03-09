@@ -44,8 +44,6 @@ struct FeedView: View {
             }
             .foregroundColor(.white)
             
-            
-            
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
                     LazyVStack {

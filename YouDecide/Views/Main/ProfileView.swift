@@ -77,7 +77,6 @@ struct ProfileView: View {
                 }.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
             }
             
-            
             Divider().background()
             
             ScrollView {
@@ -86,9 +85,6 @@ struct ProfileView: View {
                         
                         Text("My Latest Polls").font(.title3)
                         Divider().background().frame(width: 150)
-//                            PollView(username: "Username", userProfileImageUrl: "", dateCreated: "01-01-2020", poll: poll)
-//                            PollView(username: "Username", userProfileImageUrl: "", dateCreated: "01-01-2020", poll: poll)
-//                            PollView(username: "Username", userProfileImageUrl: "", dateCreated: "01-01-2020", poll: poll)
                         Spacer()
                         
                     }

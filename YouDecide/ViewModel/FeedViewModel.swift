@@ -24,8 +24,14 @@ class FeedViewModel: ObservableObject {
             
             for i in 0 ..< polls.count {
                 
-                let userId = polls[i].userId
+                //Fetch answers
+                let pollId = polls[i].id
+                self.service.fetchAnswers(forPoll: pollId!) { answers in
+                    self.polls[i].answers = answers
+                }
                 
+                //Fetch user
+                let userId = polls[i].userId
                 self.userService.fetchUser(withUid: userId) { user in
                     self.polls[i].user = user
                 }
