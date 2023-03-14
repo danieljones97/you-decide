@@ -86,9 +86,43 @@ struct PollService {
             
             let polls = documents.compactMap({ try? $0.data(as: Poll.self )})
                 
-                completion(polls.sorted(by: { $0.timestamp.dateValue() > $1.timestamp.dateValue() }))
+            completion(polls.sorted(by: { $0.timestamp.dateValue() > $1.timestamp.dateValue() }))
             
         }
+    }
+    
+    func voteOnPoll(pollId: String, answerId: String, completion: @escaping() -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        
+        //Update answer votes
+        Firestore.firestore().collection("answers").document(answerId)
+            .updateData(["votes": FieldValue.increment(Int64(1))]) { _ in
+                
+                //Update user votes table
+                let userVoteData = ["userId": userId,
+                                    "pollId": pollId,
+                                    "answerId": answerId]
+                Firestore.firestore().collection("user-votes").document().setData(userVoteData) { _ in
+                    completion()
+                }
+            }
+        
+    }
+    
+    func checkIfUserVotedOnPoll(poll: Poll, completion: @escaping(String?) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        guard let pollId = poll.id else { return }
+        
+        Firestore.firestore().collection("user-votes")
+            .whereField("pollId", isEqualTo: pollId)
+            .whereField("userId", isEqualTo: userId)
+            .getDocuments(completion: { snapshot, _ in
+                guard let document = snapshot?.documents.first else { return }
+                
+                guard let answerId = document.get("answerId") as? String else { return }
+                completion(answerId)
+            })
+        
     }
     
 }

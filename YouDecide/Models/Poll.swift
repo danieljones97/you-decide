@@ -25,6 +25,8 @@ struct Poll: Identifiable, Decodable {
     }
     
     var user: User?
+    var didVote: Bool? = false
+    var votedAnswer: String?
     
 //    var service: PollService?
 //    var userService: UserService?
