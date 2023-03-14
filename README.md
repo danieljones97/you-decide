@@ -1,4 +1,4 @@
-# you-decide
+# YouDecide
 
 iOS project
 
