@@ -60,6 +60,6 @@ struct FindFriendsView: View {
 
 struct FindFriendsView_Previews: PreviewProvider {
     static var previews: some View {
-        FindFriendsView()
+        FindFriendsView().environmentObject(FindFriendsViewModel())
     }
 }

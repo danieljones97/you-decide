@@ -22,13 +22,27 @@ struct UserRowView: View {
                 .padding(10)
             Text(user.username)
             Spacer()
+            
+            Button {
+                print("FOLLOW \(user.fullName)")
+            } label: {
+                Text("Follow")
+                    .foregroundColor(Color.white)
+                    .frame(alignment: .trailing)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .font(.caption)
+                    .overlay(RoundedRectangle(cornerRadius: 16).stroke(.white, lineWidth: 1))
+            }
+            .padding(.trailing)
+            
         }.background(Color.black)
             .foregroundColor(Color.white)
     }
 }
 
-//struct UserRowView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        UserRowView(user: User(from: <#Decoder#>, username: "User", fullName: "User 1", profileImageUrl: "", email: "User@email.com"))
-//    }
-//}
+struct UserRowView_Previews: PreviewProvider {
+    static var previews: some View {
+        UserRowView(user: User(id: "", username: "User", fullName: "User 1", profileImageUrl: "", email: "User@email.com"))
+    }
+}

@@ -22,7 +22,6 @@ class PollViewModel: ObservableObject {
             self.service.fetchAnswers(forPoll: pollId) { answers in
                 self.poll.answers = answers
                 
-//                self.poll.didVote = true
                 self.poll.votedAnswer = answerId
             }
         }
@@ -31,7 +30,6 @@ class PollViewModel: ObservableObject {
     func checkIfUserVotedOnPoll() {
         service.checkIfUserVotedOnPoll(poll: poll) { answer in
             if answer != nil {
-//                self.poll.didVote = true
                 self.poll.votedAnswer = answer
             }
         }
