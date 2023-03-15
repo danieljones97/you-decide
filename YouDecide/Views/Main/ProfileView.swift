@@ -23,22 +23,31 @@ struct ProfileView: View {
         VStack {
             VStack {
                 
-                KFImage(URL(string: viewModel.user.profileImageUrl))
-                    .resizable()
-                    .scaledToFill()
-                    .clipShape(Circle())
-                    .frame(width: 72, height: 72)
-                
                 NavigationLink {
                     ProfilePhotoSelectorView()
                         .navigationBarHidden(true)
                 } label: {
-                    HStack {
-                        Text("Select a new profile photo")
-                            .font(.caption)
-                            .fontWeight(.semibold)
+                    ZStack(alignment: .bottomTrailing) {
+                        KFImage(URL(string: viewModel.user.profileImageUrl))
+                            .resizable()
+                            .scaledToFill()
+                            .clipShape(Circle())
+                            .frame(width: 72, height: 72)
+                        
+                        Image(systemName: "camera")
+                            .resizable()
+                            .frame(width: 12, height: 10)
+                            .foregroundColor(.black)
+                            .padding(5)
+                            .background(Color.white)
+                            .clipShape(Circle())
+                            .font(.footnote)
                     }
                 }
+                
+                
+                
+                
                 
                 Text(viewModel.user.fullName).font(.title)
                 Text("@\(viewModel.user.username)").foregroundColor(.gray)
@@ -102,9 +111,9 @@ struct ProfileView: View {
 }
 
 
-//struct ProfileView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ProfileView()
-//            .environmentObject(AuthViewModel())
-//    }
-//}
+struct ProfileView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProfileView(user: User(id: "", username: "Test", fullName: "Test User", profileImageUrl: "", email: "test@email.com"))
+            .environmentObject(AuthViewModel())
+    }
+}
