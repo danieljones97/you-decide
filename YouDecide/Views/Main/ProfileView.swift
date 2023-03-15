@@ -45,10 +45,6 @@ struct ProfileView: View {
                     }
                 }
                 
-                
-                
-                
-                
                 Text(viewModel.user.fullName).font(.title)
                 Text("@\(viewModel.user.username)").foregroundColor(.gray)
                 
@@ -59,13 +55,28 @@ struct ProfileView: View {
                 VStack {
                     HStack {
                         Spacer()
-                        Button {
-                            authViewModel.signOut()
-                        } label: {
-                            HStack {
-                                Text("Sign Out")
-                                Image(systemName: "rectangle.portrait.and.arrow.right")
+                        
+                        if (viewModel.user.id == authViewModel.currentUser?.id) {
+                            Button {
+                                authViewModel.signOut()
+                            } label: {
+                                HStack {
+                                    Text("Sign Out")
+                                    Image(systemName: "rectangle.portrait.and.arrow.right")
+                                }
+                                .padding(.vertical, 8)
                             }
+                        } else {
+                            Button {
+                                print("DEBUG: Follow \(viewModel.user.fullName)")
+                            } label: {
+                                Text("Follow")
+                                    .padding(10)
+                                    .background(Color.white)
+                                    .foregroundColor(.black)
+                                    .cornerRadius(20)
+                            }
+                            .padding(.horizontal, 5)
                         }
                     }
                     Spacer()
@@ -81,6 +92,7 @@ struct ProfileView: View {
                                 Image(systemName: "chevron.left")
                                 Text("Back")
                             }
+                            .padding(.vertical, 8)
                         }
                         Spacer()
                     }
