@@ -46,11 +46,13 @@ struct FindFriendsView: View {
                 LazyVStack {
                     
                     ForEach(viewModel.searchedUsers) { user in
-                        NavigationLink {
-                            ProfileView(user: user)
-                                .navigationBarHidden(true)
-                        } label: {
-                            UserRowView(user: user, isFollowing: viewModel.followedUsers.contains(user.id!))
+                        if (user.id != viewModel.currentUser.id) {
+                            NavigationLink {
+                                ProfileView(user: user)
+                                    .navigationBarHidden(true)
+                            } label: {
+                                UserRowView(user: user, isFollowing: viewModel.followedUsers.contains(user.id!))
+                            }
                         }
                     }
                 }
