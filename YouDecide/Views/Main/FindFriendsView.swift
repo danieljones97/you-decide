@@ -10,7 +10,11 @@ import SwiftUI
 struct FindFriendsView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var viewModel = FindFriendsViewModel()
+    @ObservedObject var viewModel: FindFriendsViewModel
+    
+    init(currentUser: User) {
+        self.viewModel = FindFriendsViewModel(currentUser: currentUser)
+    }
     
     var body: some View {
         VStack {
@@ -46,7 +50,7 @@ struct FindFriendsView: View {
                             ProfileView(user: user)
                                 .navigationBarHidden(true)
                         } label: {
-                            UserRowView(user: user)
+                            UserRowView(user: user, isFollowing: viewModel.followedUsers.contains(user.id!))
                         }
                     }
                 }
@@ -55,11 +59,15 @@ struct FindFriendsView: View {
             .ignoresSafeArea(.all, edges: [.leading, .trailing])
             .navigationBarHidden(true)
             .navigationTitle("")
+            .onAppear {
+                self.viewModel.fetchFollowedUsers()
+            }
     }
 }
 
-struct FindFriendsView_Previews: PreviewProvider {
-    static var previews: some View {
-        FindFriendsView().environmentObject(FindFriendsViewModel())
-    }
-}
+//
+//struct FindFriendsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FindFriendsView().environmentObject(FindFriendsViewModel())
+//    }
+//}

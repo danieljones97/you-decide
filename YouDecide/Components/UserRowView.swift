@@ -10,39 +10,55 @@ import Kingfisher
 
 struct UserRowView: View {
     
-    let user: User
+    @ObservedObject var viewModel: UserRowViewModel
+    
+    init(user: User, isFollowing: Bool) {
+        self.viewModel = UserRowViewModel(user: user, isFollowing: isFollowing)
+    }
     
     var body: some View {
         HStack {
-            KFImage(URL(string: user.profileImageUrl))
+            KFImage(URL(string: viewModel.user.profileImageUrl))
                 .resizable()
                 .scaledToFill()
                 .clipShape(Circle())
                 .frame(width: 40, height: 40)
                 .padding(10)
-            Text(user.username)
+            Text(viewModel.user.username)
             Spacer()
             
-            Button {
-                print("FOLLOW \(user.fullName)")
-            } label: {
-                Text("Follow")
+            if (viewModel.isFollowing) {
+                Text("Following")
                     .foregroundColor(Color.white)
                     .frame(alignment: .trailing)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 6)
                     .font(.caption)
                     .overlay(RoundedRectangle(cornerRadius: 16).stroke(.white, lineWidth: 1))
+                    .padding(.trailing)
+            } else {
+                Button {
+                    viewModel.followUser()
+                } label: {
+                    Text("Follow")
+                        .foregroundColor(Color.white)
+                        .frame(alignment: .trailing)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 6)
+                        .font(.caption)
+                        .overlay(RoundedRectangle(cornerRadius: 16).stroke(.white, lineWidth: 1))
+                        .padding(.trailing)
+                }
+                
             }
-            .padding(.trailing)
             
         }.background(Color.black)
             .foregroundColor(Color.white)
     }
 }
 
-struct UserRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserRowView(user: User(id: "", username: "User", fullName: "User 1", profileImageUrl: "", email: "User@email.com"))
-    }
-}
+//struct UserRowView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UserRowView(user: User(id: "", username: "User", fullName: "User 1", profileImageUrl: "", email: "User@email.com"))
+//    }
+//}

@@ -30,4 +30,39 @@ struct UserService {
                 completion(users)
             }
     }
+    
+    func fetchFollowedUsers(userId: String, completion: @escaping([String]) -> Void) {
+        
+        Firestore.firestore().collection("user-followers")
+            .whereField("followerUserId", isEqualTo: userId)
+            .getDocuments { snapshot, _ in
+                guard let documents = snapshot?.documents else { return }
+                let users = documents.compactMap({ try? $0.get("userId") as? String })
+
+                completion(users)
+            }
+    }
+    
+    func followUser(userId: String, completion: @escaping(Bool) -> Void) {
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+        
+        let userFollowerData = ["userId": userId,
+                            "followerUserId": currentUserId]
+        Firestore.firestore().collection("user-followers").document().setData(userFollowerData) { _ in
+            completion(true)
+        }
+        
+    }
+    
+    func checkIfFollowing(userId: String, completion: @escaping(Bool) -> Void) {
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+        
+        Firestore.firestore().collection("user-followers")
+            .whereField("userId", isEqualTo: userId)
+            .whereField("followerUserId", isEqualTo: currentUserId)
+            .getDocuments { snapshot, _ in
+                guard let document = snapshot?.documents.first else { return }
+                completion(document.exists)
+            }
+    }
 }

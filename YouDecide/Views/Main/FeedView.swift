@@ -17,8 +17,10 @@ struct FeedView: View {
         VStack {
             HStack {
                 NavigationLink {
-                    FindFriendsView()
-                        .navigationBarHidden(true)
+                    if let user = authViewModel.currentUser {
+                        FindFriendsView(currentUser: user)
+                            .navigationBarHidden(true)
+                    }
                 } label: {
                     Image(systemName: "person.3.fill")
                         .padding(.leading)

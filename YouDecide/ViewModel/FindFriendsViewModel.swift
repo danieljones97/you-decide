@@ -10,6 +10,8 @@ import Foundation
 class FindFriendsViewModel: ObservableObject {
     @Published var users = [User]()
     @Published var searchText = ""
+    @Published var followedUsers = [String]()
+    let currentUser: User
     
     var searchedUsers: [User] {
         if searchText.isEmpty {
@@ -26,13 +28,21 @@ class FindFriendsViewModel: ObservableObject {
     
     let service = UserService()
     
-    init() {
+    init(currentUser: User) {
+        self.currentUser = currentUser
         fetchUsers()
+        fetchFollowedUsers()
     }
     
     func fetchUsers() {
         service.fetchUsers { users in
             self.users = users
+        }
+    }
+    
+    func fetchFollowedUsers() {
+        service.fetchFollowedUsers(userId: currentUser.id!) { users in
+            self.followedUsers = users
         }
     }
     

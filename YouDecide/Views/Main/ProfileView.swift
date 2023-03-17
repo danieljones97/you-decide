@@ -67,16 +67,29 @@ struct ProfileView: View {
                                 .padding(.vertical, 8)
                             }
                         } else {
-                            Button {
-                                print("DEBUG: Follow \(viewModel.user.fullName)")
-                            } label: {
-                                Text("Follow")
-                                    .padding(10)
-                                    .background(Color.white)
-                                    .foregroundColor(.black)
-                                    .cornerRadius(20)
+                            if (viewModel.isFollowing) {
+                                Button {
+                                    print("DEBUG: Unfollow user \(viewModel.user.fullName)")
+                                } label: {
+                                    Text("Unfollow")
+                                        .padding(10)
+                                        .background(Color.white)
+                                        .foregroundColor(.black)
+                                        .cornerRadius(20)
+                                        .padding(.horizontal, 5)
+                                }
+                            } else {
+                                Button {
+                                    viewModel.followUser()
+                                } label: {
+                                    Text("Follow")
+                                        .padding(10)
+                                        .background(Color.white)
+                                        .foregroundColor(.black)
+                                        .cornerRadius(20)
+                                        .padding(.horizontal, 5)
+                                }
                             }
-                            .padding(.horizontal, 5)
                         }
                     }
                     Spacer()

@@ -14,9 +14,11 @@ class ProfileViewModel: ObservableObject {
     private let pollService = PollService()
     
     let user: User
+    @Published var isFollowing: Bool = false
     
     init(user: User) {
         self.user = user
+        self.checkIfFollowing()
         self.fetchUserPolls()
     }
     
@@ -37,6 +39,18 @@ class ProfileViewModel: ObservableObject {
                 self.polls[i].user = self.user
                 
             }
+        }
+    }
+    
+    func followUser() {
+        userService.followUser(userId: self.user.id!) { success in
+            self.isFollowing = true
+        }
+    }
+    
+    func checkIfFollowing() {
+        userService.checkIfFollowing(userId: user.id!) { isFollowing in
+            self.isFollowing = isFollowing
         }
     }
 }

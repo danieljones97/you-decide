@@ -17,6 +17,7 @@
 		9232F328298BF52F007EDB0E /* FindFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9232F327298BF52F007EDB0E /* FindFriendsView.swift */; };
 		92443164299D109000616544 /* ProfilePhotoSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92443163299D109000616544 /* ProfilePhotoSelectorView.swift */; };
 		92443167299D13DB00616544 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92443166299D13DB00616544 /* ImagePicker.swift */; };
+		92483AFC29C3533200C8B6A2 /* UserRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92483AFB29C3533200C8B6A2 /* UserRowViewModel.swift */; };
 		92499B5129AF88800065347A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92499B5029AF88800065347A /* SearchBar.swift */; };
 		925403CD299EED6C00896A78 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925403CC299EED6C00896A78 /* UserService.swift */; };
 		925403CF299EEEAE00896A78 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925403CE299EEEAE00896A78 /* User.swift */; };
@@ -56,6 +57,7 @@
 		9232F327298BF52F007EDB0E /* FindFriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsView.swift; sourceTree = "<group>"; };
 		92443163299D109000616544 /* ProfilePhotoSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoSelectorView.swift; sourceTree = "<group>"; };
 		92443166299D13DB00616544 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		92483AFB29C3533200C8B6A2 /* UserRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRowViewModel.swift; sourceTree = "<group>"; };
 		92499B5029AF88800065347A /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		925403CC299EED6C00896A78 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		925403CE299EEEAE00896A78 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				927A6AB229B5657F00300624 /* FeedViewModel.swift */,
 				92FA266329B8BAA7000D22EC /* PollViewModel.swift */,
 				922CB84F29B94801009A57EC /* ProfileViewModel.swift */,
+				92483AFB29C3533200C8B6A2 /* UserRowViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				92F5DEC4299D8FCD007A7EA5 /* ImageUploader.swift in Sources */,
 				927A6AAF29B5602C00300624 /* NewPollViewModel.swift in Sources */,
 				925D798028DF59020085C5F6 /* PollView.swift in Sources */,
+				92483AFC29C3533200C8B6A2 /* UserRowViewModel.swift in Sources */,
 				922CB85029B94801009A57EC /* ProfileViewModel.swift in Sources */,
 				9260B0F929AE375800BE84E5 /* FindFriendsViewModel.swift in Sources */,
 				92443167299D13DB00616544 /* ImagePicker.swift in Sources */,
