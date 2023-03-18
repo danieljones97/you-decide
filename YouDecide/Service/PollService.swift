@@ -61,17 +61,17 @@ struct PollService {
         }
     }
     
-    func fetchPolls(completion: @escaping([Poll]) -> Void) {
+    func fetchPolls(users: [String], completion: @escaping([Poll]) -> Void) {
         
         Firestore.firestore().collection("polls")
-            .order(by: "timestamp", descending: true)
+            .whereField("userId", in: users)
             .getDocuments { snapshot, _ in
                 
             guard let documents = snapshot?.documents else { return }
             
             let polls = documents.compactMap({ try? $0.data(as: Poll.self )})
                 
-            completion(polls)
+            completion(polls.sorted(by: { $0.timestamp.dateValue() > $1.timestamp.dateValue() }))
             
         }
     }

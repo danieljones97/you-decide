@@ -13,30 +13,37 @@ class FeedViewModel: ObservableObject {
     let service = PollService()
     let userService = UserService()
     
-    init() {
+    let currentUserId: String
+    
+    init(currentUserId: String) {
+        self.currentUserId = currentUserId
         fetchPolls()
     }
     
     func fetchPolls() {
-        
-        service.fetchPolls { polls in
-            self.polls = polls
+        userService.fetchFollowedUsers(userId: currentUserId) { followedUsers in
             
-            for i in 0 ..< polls.count {
+            self.service.fetchPolls(users: followedUsers) { polls in
+                self.polls = polls
                 
-                //Fetch answers
-                let pollId = polls[i].id
-                self.service.fetchAnswers(forPoll: pollId!) { answers in
-                    self.polls[i].answers = answers
+                for i in 0 ..< polls.count {
+                    
+                    //Fetch answers
+                    let pollId = polls[i].id
+                    self.service.fetchAnswers(forPoll: pollId!) { answers in
+                        self.polls[i].answers = answers
+                    }
+                    
+                    //Fetch user
+                    let userId = polls[i].userId
+                    self.userService.fetchUser(withUid: userId) { user in
+                        self.polls[i].user = user
+                    }
+                    
                 }
-                
-                //Fetch user
-                let userId = polls[i].userId
-                self.userService.fetchUser(withUid: userId) { user in
-                    self.polls[i].user = user
-                }
-                
             }
         }
+        
+        
     }
 }

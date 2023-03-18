@@ -10,8 +10,12 @@ import SwiftUI
 struct FeedView: View {
     
     @State private var showNewPollView = false
-    @ObservedObject var viewModel = FeedViewModel()
+    @ObservedObject var viewModel: FeedViewModel
     @EnvironmentObject var authViewModel: AuthViewModel
+    
+    init(currentUserId: String) {
+        self.viewModel = FeedViewModel(currentUserId: currentUserId)
+    }
     
     var body: some View {
         VStack {
@@ -82,8 +86,8 @@ struct FeedView: View {
     }
 }
 
-struct FeedView_Previews: PreviewProvider {
-    static var previews: some View {
-        FeedView()
-    }
-}
+//struct FeedView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FeedView()
+//    }
+//}
