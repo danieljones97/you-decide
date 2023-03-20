@@ -21,7 +21,7 @@ class FeedViewModel: ObservableObject {
     }
     
     func fetchPolls() {
-        userService.fetchFollowedUsers(userId: currentUserId) { followedUsers in
+        userService.fetchFollowingUsers(userId: currentUserId) { followedUsers in
             
             self.service.fetchPolls(users: followedUsers) { polls in
                 self.polls = polls

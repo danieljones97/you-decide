@@ -15,9 +15,13 @@ class ProfileViewModel: ObservableObject {
     
     let user: User
     @Published var isFollowing: Bool = false
+    @Published var userFollowingCount = 0
+    @Published var userFollowerCount = 0
     
     init(user: User) {
         self.user = user
+        self.fetchUserFollowersCount(userId: user.id!)
+        self.fetchUserFollowingCount(userId: user.id!)
         self.checkIfFollowing()
         self.fetchUserPolls()
     }
@@ -39,6 +43,18 @@ class ProfileViewModel: ObservableObject {
                 self.polls[i].user = self.user
                 
             }
+        }
+    }
+    
+    func fetchUserFollowingCount(userId: String) {
+        userService.fetchFollowingUsersCount(userId: userId) { count in
+            self.userFollowingCount = count
+        }
+    }
+    
+    func fetchUserFollowersCount(userId: String) {
+        userService.fetchFollowerUsersCount(userId: userId) { count in
+            self.userFollowerCount = count
         }
     }
     

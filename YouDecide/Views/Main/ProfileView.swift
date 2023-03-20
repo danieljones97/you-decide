@@ -48,6 +48,18 @@ struct ProfileView: View {
                 Text(viewModel.user.fullName).font(.title)
                 Text("@\(viewModel.user.username)").foregroundColor(.gray)
                 
+                HStack(spacing: 4) {
+                    Text("\(viewModel.userFollowingCount)")
+                        .fontWeight(.bold)
+                    Text("following")
+                        .padding(.trailing)
+                    Text("\(viewModel.userFollowerCount)")
+                        .fontWeight(.bold)
+                        .padding(.leading)
+                    Text("followers")
+                }
+                .padding(.top, 1)
+                
             }
             .padding(.top, 40)
             .frame(width: UIScreen.main.bounds.size.width)
