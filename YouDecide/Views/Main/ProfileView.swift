@@ -69,7 +69,7 @@ struct ProfileView: View {
                         } else {
                             if (viewModel.isFollowing) {
                                 Button {
-                                    print("DEBUG: Unfollow user \(viewModel.user.fullName)")
+                                    viewModel.unfollowUser()
                                 } label: {
                                     Text("Unfollow")
                                         .padding(10)

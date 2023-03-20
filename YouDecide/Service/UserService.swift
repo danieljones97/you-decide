@@ -51,7 +51,20 @@ struct UserService {
         Firestore.firestore().collection("user-followers").document().setData(userFollowerData) { _ in
             completion(true)
         }
+    }
+    
+    func unfollowUser(userId: String, completion: @escaping(Bool) -> Void) {
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
         
+        Firestore.firestore().collection("user-followers")
+            .whereField("userId", isEqualTo: userId)
+            .whereField("followerUserId", isEqualTo: currentUserId)
+            .getDocuments { snapshot, _ in
+                guard let document = snapshot?.documents.first else { return }
+                document.reference.delete()
+                completion(true)
+                
+            }
     }
     
     func checkIfFollowing(userId: String, completion: @escaping(Bool) -> Void) {

@@ -48,6 +48,12 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
+    func unfollowUser() {
+        userService.unfollowUser(userId: self.user.id!) { success in
+            self.isFollowing = false
+        }
+    }
+    
     func checkIfFollowing() {
         userService.checkIfFollowing(userId: user.id!) { isFollowing in
             self.isFollowing = isFollowing

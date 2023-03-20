@@ -22,7 +22,13 @@ class UserRowViewModel: ObservableObject {
     func followUser() {
         service.followUser(userId: self.user.id!) { success in
             self.isFollowing = true
-            //Need to trigger find friends view model to go and fetch followed users
+        }
+    }
+    
+    func unfollowUser() {
+        print("DEBUG: Unfollowing")
+        service.unfollowUser(userId: self.user.id!) { success in
+            self.isFollowing = false
         }
     }
 }

@@ -28,14 +28,19 @@ struct UserRowView: View {
             Spacer()
             
             if (viewModel.isFollowing) {
-                Text("Following")
-                    .foregroundColor(Color.white)
-                    .frame(alignment: .trailing)
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 6)
-                    .font(.caption)
-                    .overlay(RoundedRectangle(cornerRadius: 16).stroke(.white, lineWidth: 1))
-                    .padding(.trailing)
+                Button {
+                    viewModel.unfollowUser()
+                } label: {
+                    Text("Following")
+                        .foregroundColor(Color.white)
+                        .frame(alignment: .trailing)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 6)
+                        .font(.caption)
+                        .overlay(RoundedRectangle(cornerRadius: 16).stroke(.white, lineWidth: 1))
+                        .padding(.trailing)
+                }
+                
             } else {
                 Button {
                     viewModel.followUser()

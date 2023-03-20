@@ -83,6 +83,9 @@ struct FeedView: View {
             .ignoresSafeArea(.all, edges: [.leading, .trailing])
             .navigationBarHidden(true)
             .navigationTitle("")
+            .onAppear {
+                viewModel.fetchPolls()
+            }
     }
 }
 
