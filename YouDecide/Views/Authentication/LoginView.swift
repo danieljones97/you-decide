@@ -56,6 +56,7 @@ struct LoginView: View {
             .foregroundColor(.gray)
         }
         .ignoresSafeArea()
+        .background(Color.white)
     }
 }
 

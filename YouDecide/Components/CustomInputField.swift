@@ -24,8 +24,10 @@ struct CustomInputField: View {
                 
                 if isSecureField ?? false {
                     SecureField(placeholderText, text: $text)
+                        .foregroundColor(.black)
                 } else {
                     TextField(placeholderText, text: $text)
+                        .foregroundColor(.black)
                 }
             }.padding(.bottom, 8)
             

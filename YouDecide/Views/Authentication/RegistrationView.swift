@@ -64,6 +64,7 @@ struct RegistrationView: View {
 
             
         }.ignoresSafeArea()
+            .background(Color.white)
     }
 }
 
