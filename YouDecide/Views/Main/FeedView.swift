@@ -64,9 +64,9 @@ struct FeedView: View {
                 } else {
                     VStack {
                         Spacer()
-                        Text("There's nothing for you to decide on!")
+                        Text("It's so empty in here...")
                             .padding()
-                        Text("Go and follow some new people to see more polls!")
+                        Text("Go and follow some new people to see some stuff!")
                             .padding()
                         Spacer()
                     }
