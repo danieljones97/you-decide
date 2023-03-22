@@ -35,7 +35,7 @@ struct FindFriendsView: View {
                     Spacer()
                     Text("Find Friends")
                         .foregroundColor(Color.white)
-                        .font(.largeTitle)
+                        .font(.title)
                 }
             }
             

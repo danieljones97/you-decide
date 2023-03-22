@@ -69,15 +69,23 @@ struct ProfileView: View {
                         Spacer()
                         
                         if (viewModel.user.id == authViewModel.currentUser?.id) {
-                            Button {
-                                authViewModel.signOut()
+                            NavigationLink {
+                                SettingsView()
+                                        .navigationBarHidden(true)
                             } label: {
-                                HStack {
-                                    Text("Sign Out")
-                                    Image(systemName: "rectangle.portrait.and.arrow.right")
-                                }
-                                .padding(.vertical, 8)
+                                Text("Settings")
+                                Image(systemName: "gearshape.fill")
                             }
+                            
+//                            Button {
+//                                authViewModel.signOut()
+//                            } label: {
+//                                HStack {
+//                                    Text("Sign Out")
+//                                    Image(systemName: "rectangle.portrait.and.arrow.right")
+//                                }
+//                                .padding(.vertical, 8)
+//                            }
                         } else {
                             if (viewModel.isFollowing) {
                                 Button {

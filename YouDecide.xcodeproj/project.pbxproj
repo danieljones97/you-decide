@@ -42,6 +42,7 @@
 		927A6AA929B2694700300624 /* PollService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927A6AA829B2694700300624 /* PollService.swift */; };
 		927A6AAF29B5602C00300624 /* NewPollViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927A6AAE29B5602C00300624 /* NewPollViewModel.swift */; };
 		927A6AB329B5657F00300624 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927A6AB229B5657F00300624 /* FeedViewModel.swift */; };
+		92AF2D7629CB36E1006805A4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AF2D7529CB36E1006805A4 /* SettingsView.swift */; };
 		92C3589F291699AB007ED2CC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C3589E291699AB007ED2CC /* LoginView.swift */; };
 		92F5DEC4299D8FCD007A7EA5 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F5DEC3299D8FCD007A7EA5 /* ImageUploader.swift */; };
 		92FA266429B8BAA7000D22EC /* PollViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA266329B8BAA7000D22EC /* PollViewModel.swift */; };
@@ -79,6 +80,7 @@
 		927A6AA829B2694700300624 /* PollService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollService.swift; sourceTree = "<group>"; };
 		927A6AAE29B5602C00300624 /* NewPollViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPollViewModel.swift; sourceTree = "<group>"; };
 		927A6AB229B5657F00300624 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		92AF2D7529CB36E1006805A4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		92C3589E291699AB007ED2CC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		92F5DEC3299D8FCD007A7EA5 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		92FA266329B8BAA7000D22EC /* PollViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollViewModel.swift; sourceTree = "<group>"; };
@@ -185,9 +187,9 @@
 		925D797B28DF55CB0085C5F6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				92AF2D7429CB36CA006805A4 /* Other */,
 				9260B0FB29AE386800BE84E5 /* Main */,
 				922FB7062993DE5E00CB9851 /* Authentication */,
-				923003E429B0E36A0088C9DA /* NewPollView.swift */,
 				922F885229C9EB7E00A919F1 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
@@ -224,6 +226,15 @@
 				922BCC3A28F7415300989AEE /* ProfileView.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		92AF2D7429CB36CA006805A4 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				923003E429B0E36A0088C9DA /* NewPollView.swift */,
+				92AF2D7529CB36E1006805A4 /* SettingsView.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		92E3C38B299A71460099BDCC /* Service */ = {
@@ -343,6 +354,7 @@
 				92C3589F291699AB007ED2CC /* LoginView.swift in Sources */,
 				922FB7082993DE8800CB9851 /* AuthViewModel.swift in Sources */,
 				925D796E28DF52D50085C5F6 /* YouDecideApp.swift in Sources */,
+				92AF2D7629CB36E1006805A4 /* SettingsView.swift in Sources */,
 				9232F326298BF063007EDB0E /* AuthHeaderView.swift in Sources */,
 				9260888C298A9F6F00033587 /* CustomInputField.swift in Sources */,
 				923003E529B0E36A0088C9DA /* NewPollView.swift in Sources */,
