@@ -51,14 +51,27 @@ struct FeedView: View {
             .foregroundColor(.white)
             
             ZStack(alignment: .bottomTrailing) {
-                ScrollView {
-                    LazyVStack {
-                        ForEach(viewModel.polls) { poll in
-                            PollView(poll: poll)
-                                .padding(5)
+                if (viewModel.polls.count > 0) {
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(viewModel.polls) { poll in
+                                PollView(poll: poll)
+                                    .padding(5)
+                            }
+                            
                         }
-                        
                     }
+                } else {
+                    VStack {
+                        Spacer()
+                        Text("There's nothing for you to decide on!")
+                            .padding()
+                        Text("Go and follow some new people to see more polls!")
+                            .padding()
+                        Spacer()
+                    }
+                    .foregroundColor(Color.white)
+                    .multilineTextAlignment(.center)
                 }
                 
                 Button {
