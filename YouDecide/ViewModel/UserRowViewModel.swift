@@ -13,10 +13,12 @@ class UserRowViewModel: ObservableObject {
     
     let user: User
     @Published var isFollowing: Bool
+    let showFollowButton: Bool
     
-    init(user: User, isFollowing: Bool) {
+    init(user: User, isFollowing: Bool, showFollowButton: Bool) {
         self.user = user
         self.isFollowing = isFollowing
+        self.showFollowButton = showFollowButton
     }
     
     func followUser() {

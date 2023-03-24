@@ -21,7 +21,7 @@ struct UserService {
             }
     }
     
-    func fetchUsers(completion: @escaping([User]) -> Void) {
+    func fetchAllUsers(completion: @escaping([User]) -> Void) {
         Firestore.firestore().collection("users")
             .getDocuments { snapshot, _ in
                 guard let documents = snapshot?.documents else { return }
@@ -31,7 +31,18 @@ struct UserService {
             }
     }
     
-    func fetchFollowingUsers(userId: String, completion: @escaping([String]) -> Void) {
+    func fetchUsers(withUids uids: [String], completion: @escaping([User]) -> Void) {
+        Firestore.firestore().collection("users")
+            .whereField("uid", in: uids)
+            .getDocuments { snapshot, _ in
+                guard let documents = snapshot?.documents else { return }
+                let users = documents.compactMap({ try? $0.data(as: User.self) })
+                
+                completion(users)
+            }
+    }
+    
+    func fetchFollowingUsersIds(userId: String, completion: @escaping([String]) -> Void) {
         
         Firestore.firestore().collection("user-followers")
             .whereField("followerUserId", isEqualTo: userId)
@@ -49,6 +60,18 @@ struct UserService {
             .whereField("followerUserId", isEqualTo: userId)
             .getDocuments { snapshot, _ in
                 completion(snapshot?.documents.count ?? 0)
+            }
+    }
+
+    func fetchFollowersUsersIds(userId: String, completion: @escaping([String]) -> Void) {
+        
+        Firestore.firestore().collection("user-followers")
+            .whereField("userId", isEqualTo: userId)
+            .getDocuments { snapshot, _ in
+                guard let documents = snapshot?.documents else { return }
+                let users = documents.compactMap({ try? $0.get("followerUserId") as? String })
+
+                completion(users)
             }
     }
     

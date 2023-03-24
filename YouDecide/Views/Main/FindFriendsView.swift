@@ -35,28 +35,30 @@ struct FindFriendsView: View {
                     Spacer()
                     Text("Find Friends")
                         .foregroundColor(Color.white)
-                        .font(.title)
+                        .font(.title2)
                 }
             }
             
-            SearchBar(text: $viewModel.searchText)
-                .padding(.horizontal)
+            UserListView(users: viewModel.users, followedUsers: viewModel.followedUsers, currentUser: viewModel.currentUser, showFollowButton: true)
             
-            ScrollView {
-                LazyVStack {
-                    
-                    ForEach(viewModel.searchedUsers) { user in
-                        if (user.id != viewModel.currentUser.id) {
-                            NavigationLink {
-                                ProfileView(user: user)
-                                    .navigationBarHidden(true)
-                            } label: {
-                                UserRowView(user: user, isFollowing: viewModel.followedUsers.contains(user.id!))
-                            }
-                        }
-                    }
-                }
-            }
+//            SearchBar(text: $viewModel.searchText)
+//                .padding(.horizontal)
+//
+//            ScrollView {
+//                LazyVStack {
+//
+//                    ForEach(viewModel.searchedUsers) { user in
+//                        if (user.id != viewModel.currentUser.id) {
+//                            NavigationLink {
+//                                ProfileView(user: user)
+//                                    .navigationBarHidden(true)
+//                            } label: {
+//                                UserRowView(user: user, isFollowing: viewModel.followedUsers.contains(user.id!))
+//                            }
+//                        }
+//                    }
+//                }
+//            }
         }.background(Color.black)
             .ignoresSafeArea(.all, edges: [.leading, .trailing])
             .navigationBarHidden(true)

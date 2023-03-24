@@ -12,8 +12,8 @@ struct UserRowView: View {
     
     @ObservedObject var viewModel: UserRowViewModel
     
-    init(user: User, isFollowing: Bool) {
-        self.viewModel = UserRowViewModel(user: user, isFollowing: isFollowing)
+    init(user: User, isFollowing: Bool, showFollowButton: Bool) {
+        self.viewModel = UserRowViewModel(user: user, isFollowing: isFollowing, showFollowButton: showFollowButton)
     }
     
     var body: some View {
@@ -26,35 +26,36 @@ struct UserRowView: View {
                 .padding(10)
             Text(viewModel.user.username)
             Spacer()
-            
-            if (viewModel.isFollowing) {
-                Button {
-                    viewModel.unfollowUser()
-                } label: {
-                    Text("Following")
-                        .foregroundColor(Color.white)
-                        .frame(alignment: .trailing)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 6)
-                        .font(.caption)
-                        .overlay(RoundedRectangle(cornerRadius: 16).stroke(.white, lineWidth: 1))
-                        .padding(.trailing)
+            if (viewModel.showFollowButton) {
+                if (viewModel.isFollowing) {
+                    Button {
+                        viewModel.unfollowUser()
+                    } label: {
+                        Text("Following")
+                            .foregroundColor(Color.white)
+                            .frame(alignment: .trailing)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 6)
+                            .font(.caption)
+                            .overlay(RoundedRectangle(cornerRadius: 16).stroke(.white, lineWidth: 1))
+                            .padding(.trailing)
+                    }
+                    
+                } else {
+                    Button {
+                        viewModel.followUser()
+                    } label: {
+                        Text("Follow")
+                            .foregroundColor(Color.white)
+                            .frame(alignment: .trailing)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 6)
+                            .font(.caption)
+                            .overlay(RoundedRectangle(cornerRadius: 16).stroke(.white, lineWidth: 1))
+                            .padding(.trailing)
+                    }
+                    
                 }
-                
-            } else {
-                Button {
-                    viewModel.followUser()
-                } label: {
-                    Text("Follow")
-                        .foregroundColor(Color.white)
-                        .frame(alignment: .trailing)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 6)
-                        .font(.caption)
-                        .overlay(RoundedRectangle(cornerRadius: 16).stroke(.white, lineWidth: 1))
-                        .padding(.trailing)
-                }
-                
             }
             
         }.background(Color.black)

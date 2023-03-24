@@ -49,14 +49,25 @@ struct ProfileView: View {
                 Text("@\(viewModel.user.username)").foregroundColor(.gray)
                 
                 HStack(spacing: 4) {
-                    Text("\(viewModel.userFollowingCount)")
-                        .fontWeight(.bold)
-                    Text("following")
-                        .padding(.trailing)
-                    Text("\(viewModel.userFollowerCount)")
-                        .fontWeight(.bold)
-                        .padding(.leading)
-                    Text("followers")
+                    
+                    NavigationLink {
+                        NavigationLazyView(FollowListView(user: viewModel.user, isFollowingList: true))
+                    } label: {
+                        Text("\(viewModel.userFollowingCount)")
+                            .fontWeight(.bold)
+                        Text("following")
+                            .padding(.trailing)
+                    }
+                    
+                    NavigationLink {
+                        NavigationLazyView(FollowListView(user: viewModel.user, isFollowingList: false))
+                    } label: {
+                        Text("\(viewModel.userFollowerCount)")
+                            .fontWeight(.bold)
+                            .padding(.leading)
+                        Text("followers")
+                    }
+                    
                 }
                 .padding(.top, 1)
                 
@@ -77,15 +88,6 @@ struct ProfileView: View {
                                 Image(systemName: "gearshape.fill")
                             }
                             
-//                            Button {
-//                                authViewModel.signOut()
-//                            } label: {
-//                                HStack {
-//                                    Text("Sign Out")
-//                                    Image(systemName: "rectangle.portrait.and.arrow.right")
-//                                }
-//                                .padding(.vertical, 8)
-//                            }
                         } else {
                             if (viewModel.isFollowing) {
                                 Button {

@@ -22,7 +22,7 @@ struct FeedView: View {
             HStack {
                 NavigationLink {
                     if let user = authViewModel.currentUser {
-                        FindFriendsView(currentUser: user)
+                        NavigationLazyView(FindFriendsView(currentUser: user))
                             .navigationBarHidden(true)
                     }
                 } label: {
@@ -33,13 +33,13 @@ struct FeedView: View {
                 Spacer()
                 
                 Text("YouDecide")
-                    .font(.title)
+                    .font(.title2)
                 
                 Spacer()
                 
                 NavigationLink {
                     if let user = authViewModel.currentUser {
-                        ProfileView(user: user)
+                        NavigationLazyView(ProfileView(user: user))
                             .navigationBarHidden(true)
                     }
                 } label: {

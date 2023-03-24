@@ -35,13 +35,13 @@ class FindFriendsViewModel: ObservableObject {
     }
     
     func fetchUsers() {
-        service.fetchUsers { users in
+        service.fetchAllUsers { users in
             self.users = users
         }
     }
     
     func fetchFollowedUsers() {
-        service.fetchFollowingUsers(userId: currentUser.id!) { users in
+        service.fetchFollowingUsersIds(userId: currentUser.id!) { users in
             self.followedUsers = users
         }
     }
