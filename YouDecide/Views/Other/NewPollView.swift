@@ -91,11 +91,13 @@ struct NewPollView: View {
             }
         }
         .ignoresSafeArea(.all, edges: [.leading, .trailing])
+        .background(Color.white)
         .onReceive(viewModel.$didUploadPoll) { success in
             if success {
                 presentationMode.wrappedValue.dismiss()
             }
         }
+        .preferredColorScheme(.light)
     }
 }
 

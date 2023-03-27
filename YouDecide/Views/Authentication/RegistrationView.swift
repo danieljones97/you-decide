@@ -63,8 +63,10 @@ struct RegistrationView: View {
             .foregroundColor(.gray)
 
             
-        }.ignoresSafeArea()
-            .background(Color.white)
+        }
+        .ignoresSafeArea()
+        .background(Color.white)
+        .preferredColorScheme(.light)
     }
 }
 

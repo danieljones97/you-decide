@@ -68,8 +68,10 @@ struct ProfilePhotoSelectorView: View {
             }
             .padding(.bottom, 32)
             .foregroundColor(.gray)
-        }.ignoresSafeArea()
-            .background(Color.white)
+        }
+        .ignoresSafeArea()
+        .background(Color.white)
+        .preferredColorScheme(.light)
     }
     
     func loadImage() {
