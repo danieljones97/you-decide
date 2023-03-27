@@ -30,20 +30,22 @@ struct SettingsView: View {
                 Spacer()
                 Text("Settings")
                     .foregroundColor(Color.white)
-                    .font(.title)
+                    .font(.title2)
             }
+            .padding(.horizontal)
             
             //Page Contents
             Button {
                 authViewModel.signOut()
             } label: {
                 HStack {
-                    Text("Sign Out")
                     Image(systemName: "rectangle.portrait.and.arrow.right")
+                    Text("Sign Out")
                 }
                 .padding(.vertical, 8)
                 Spacer()
             }
+            .padding()
             
             Spacer()
         }

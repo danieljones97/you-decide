@@ -87,6 +87,7 @@ struct ProfileView: View {
                                 Text("Settings")
                                 Image(systemName: "gearshape.fill")
                             }
+                            .padding(10)
                             
                         } else {
                             if (viewModel.isFollowing) {
@@ -127,7 +128,7 @@ struct ProfileView: View {
                                 Image(systemName: "chevron.left")
                                 Text("Back")
                             }
-                            .padding(.vertical, 8)
+                            .padding(8)
                         }
                         Spacer()
                     }
