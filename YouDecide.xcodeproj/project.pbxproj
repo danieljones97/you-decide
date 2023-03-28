@@ -41,6 +41,7 @@
 		9260888E298AA16D00033587 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9260888D298AA16D00033587 /* RegistrationView.swift */; };
 		9260B0F929AE375800BE84E5 /* FindFriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9260B0F829AE375800BE84E5 /* FindFriendsViewModel.swift */; };
 		9260B0FD29AE390300BE84E5 /* UserRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9260B0FC29AE390300BE84E5 /* UserRowView.swift */; };
+		926583A129D1C94500F703A0 /* Timeago.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926583A029D1C94500F703A0 /* Timeago.swift */; };
 		927A6AA929B2694700300624 /* PollService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927A6AA829B2694700300624 /* PollService.swift */; };
 		927A6AAF29B5602C00300624 /* NewPollViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927A6AAE29B5602C00300624 /* NewPollViewModel.swift */; };
 		927A6AB329B5657F00300624 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927A6AB229B5657F00300624 /* FeedViewModel.swift */; };
@@ -83,6 +84,7 @@
 		9260888D298AA16D00033587 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		9260B0F829AE375800BE84E5 /* FindFriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsViewModel.swift; sourceTree = "<group>"; };
 		9260B0FC29AE390300BE84E5 /* UserRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRowView.swift; sourceTree = "<group>"; };
+		926583A029D1C94500F703A0 /* Timeago.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeago.swift; sourceTree = "<group>"; };
 		927A6AA829B2694700300624 /* PollService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollService.swift; sourceTree = "<group>"; };
 		927A6AAE29B5602C00300624 /* NewPollViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPollViewModel.swift; sourceTree = "<group>"; };
 		927A6AB229B5657F00300624 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
@@ -147,8 +149,20 @@
 			isa = PBXGroup;
 			children = (
 				92443166299D13DB00616544 /* ImagePicker.swift */,
+				926583A029D1C94500F703A0 /* Timeago.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		925472B029D3163200DC7FBD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				922F62B829CDDF8C00B27A83 /* NavigationLazyView.swift */,
+				9260B0FC29AE390300BE84E5 /* UserRowView.swift */,
+				925D797F28DF59020085C5F6 /* PollView.swift */,
+				92C9655729CC8EDB009F82EF /* UserListView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		925D796128DF52D50085C5F6 = {
@@ -207,14 +221,11 @@
 		925D797E28DF58EF0085C5F6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				925472B029D3163200DC7FBD /* Views */,
 				9232F324298BF048007EDB0E /* Authentication */,
-				9260B0FC29AE390300BE84E5 /* UserRowView.swift */,
-				925D797F28DF59020085C5F6 /* PollView.swift */,
 				921D7C64298951D8000F51D9 /* RoundedShape.swift */,
 				9260888B298A9F6F00033587 /* CustomInputField.swift */,
 				92499B5029AF88800065347A /* SearchBar.swift */,
-				92C9655729CC8EDB009F82EF /* UserListView.swift */,
-				922F62B829CDDF8C00B27A83 /* NavigationLazyView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -368,6 +379,7 @@
 				922F62B729CDD56200B27A83 /* FollowListView.swift in Sources */,
 				9232F328298BF52F007EDB0E /* FindFriendsView.swift in Sources */,
 				92C3589F291699AB007ED2CC /* LoginView.swift in Sources */,
+				926583A129D1C94500F703A0 /* Timeago.swift in Sources */,
 				922FB7082993DE8800CB9851 /* AuthViewModel.swift in Sources */,
 				925D796E28DF52D50085C5F6 /* YouDecideApp.swift in Sources */,
 				92AF2D7629CB36E1006805A4 /* SettingsView.swift in Sources */,

@@ -38,7 +38,7 @@ struct PollView: View {
                                 Text(user.username)
                                     .padding(.leading)
                                 Spacer()
-                                Text("Date")
+                            Text(viewModel.poll.timestamp.dateValue().timeAgoDisplay())
                                     .font(.footnote)
                                     .fontWeight(.light)
                         }
@@ -86,6 +86,7 @@ struct PollView: View {
                                     }
                                 } else {
                                     ProgressView(value: answer.calculateVotePercentage(voteCount: answer.votes, totalVoteCount: viewModel.poll.totalVoteCount!)).frame(minWidth: UIScreen.main.bounds.size.width/4, maxWidth: .infinity,alignment: .trailing)
+                                    
                                     Text(String(answer.votes) + " votes").layoutPriority(1)
                                 }
 
@@ -107,8 +108,9 @@ struct PollView: View {
     }
 }
 
-struct PollView_Previews: PreviewProvider {
-    static var previews: some View {
-        PollView(poll: Poll(userId: "UserID", questionText: "This is a test of a really long question title to see whether it breaks the UI", answers: [Answer(pollId: "PollID", answerText: "This is a ", votes: 2)], timestamp: Timestamp()))
-    }
-}
+//struct PollView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PollView(poll: Poll(userId: "UserID", questionText: "This is a test of a really long question title to see whether it breaks the UI", answers: [Answer(pollId: "PollID", answerText: "This is a ", votes: 2)], timestamp: Timestamp()))
+//    }
+//}
+
