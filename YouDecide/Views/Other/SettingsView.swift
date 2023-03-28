@@ -34,20 +34,74 @@ struct SettingsView: View {
             }
             .padding(.horizontal)
             
-            //Page Contents
-            Button {
-                authViewModel.signOut()
-            } label: {
-                HStack {
-                    Image(systemName: "rectangle.portrait.and.arrow.right")
-                    Text("Sign Out")
-                }
-                .padding(.vertical, 8)
-                Spacer()
-            }
-            .padding()
+            //Button List
             
-            Spacer()
+            VStack {
+                NavigationLink {
+                    //Add view here
+                } label: {
+                    HStack {
+                        Image(systemName: "person.fill")
+                        Text("Edit Profile")
+                    }
+                    .padding(.vertical, 8)
+                    Spacer()
+                }.padding(.horizontal)
+                
+                
+                NavigationLink {
+                    //Add view here
+                } label: {
+                    HStack {
+                        Image(systemName: "figure.wave.circle")
+                        Text("Accessibility")
+                    }
+                    .padding(.vertical, 8)
+                    Spacer()
+                }.padding(.horizontal)
+                
+                
+                NavigationLink {
+                    //Add view here
+                } label: {
+                    HStack {
+                        Image(systemName: "list.clipboard")
+                        Text("Terms & Conditions")
+                    }
+                    .padding(.vertical, 8)
+                    Spacer()
+                }.padding(.horizontal)
+                
+                
+                NavigationLink {
+                    //Add view here
+                } label: {
+                    HStack {
+                        Image(systemName: "hand.raised")
+                        Text("Privacy Policy")
+                    }
+                    .padding(.vertical, 8)
+                    Spacer()
+                }.padding(.horizontal)
+                
+                
+                Button {
+                    authViewModel.signOut()
+                } label: {
+                    HStack {
+                        Image(systemName: "rectangle.portrait.and.arrow.right")
+                        Text("Sign Out")
+                    }
+                    .padding(.vertical, 8)
+                    Spacer()
+                }
+                .padding()
+                
+                
+                Spacer()
+                
+            }
+            .padding(.top, 20)
         }
         .padding(.leading, 3)
         .ignoresSafeArea(.all, edges: [.leading, .trailing])
