@@ -12,6 +12,7 @@ struct CustomInputField: View {
     let placeholderText: String
     var isSecureField: Bool? = false
     @Binding var text: String
+    var darkMode: Bool = false
     
     var body: some View {
         VStack {
@@ -24,15 +25,15 @@ struct CustomInputField: View {
                 
                 if isSecureField ?? false {
                     SecureField(placeholderText, text: $text)
-                        .foregroundColor(.black)
+                        .foregroundColor(darkMode ? .black : .white)
                 } else {
                     TextField(placeholderText, text: $text)
-                        .foregroundColor(.black)
+                        .foregroundColor(darkMode ? .white : .black)
                 }
             }.padding(.bottom, 8)
             
             Divider()
-                .background(.gray)
+                .background(darkMode ? Color.white : Color.gray)
         }
     }
 }

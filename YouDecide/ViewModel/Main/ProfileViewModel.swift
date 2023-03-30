@@ -13,7 +13,7 @@ class ProfileViewModel: ObservableObject {
     private let userService = UserService()
     private let pollService = PollService()
     
-    let user: User
+    var user: User
     @Published var isFollowing: Bool = false
     @Published var userFollowingCount = 0
     @Published var userFollowerCount = 0
@@ -24,6 +24,13 @@ class ProfileViewModel: ObservableObject {
         self.fetchUserFollowingCount(userId: user.id!)
         self.checkIfFollowing()
         self.fetchUserPolls()
+    }
+    
+    func fetchUserInfo() {
+        userService.fetchUser(withUid: user.id!) { user in
+            self.user.fullName = user.fullName
+            self.user.username = user.username
+        }
     }
     
     func fetchUserPolls () {

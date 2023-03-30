@@ -38,7 +38,10 @@ struct SettingsView: View {
             
             VStack {
                 NavigationLink {
-                    //Add view here
+                    if let user = authViewModel.currentUser {
+                        NavigationLazyView(EditProfileView(user: user))
+                            .navigationBarHidden(true)
+                    }
                 } label: {
                     HStack {
                         Image(systemName: "person.fill")

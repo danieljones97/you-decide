@@ -9,8 +9,8 @@ import FirebaseFirestoreSwift
 
 struct User: Identifiable, Decodable {
     @DocumentID var id: String?
-    let username: String
-    let fullName: String
+    var username: String
+    var fullName: String
     let profileImageUrl: String
-    let email: String
+    var email: String
 }

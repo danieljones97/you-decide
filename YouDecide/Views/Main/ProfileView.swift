@@ -153,7 +153,13 @@ struct ProfileView: View {
                     }
                 }
             }
-        }.background(Color.black).ignoresSafeArea(.all, edges: [.leading, .trailing]).foregroundColor(.white)
+        }
+        .background(Color.black)
+        .ignoresSafeArea(.all, edges: [.leading, .trailing])
+        .foregroundColor(.white)
+        .onAppear {
+            viewModel.fetchUserInfo()
+        }
     }
     
 }

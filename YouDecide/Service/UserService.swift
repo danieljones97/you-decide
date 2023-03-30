@@ -119,4 +119,20 @@ struct UserService {
                 completion(document.exists)
             }
     }
+    
+    func updateUser(id: String, username: String, email: String, fullName: String, completion: @escaping(Bool) -> Void) {
+        Firestore.firestore().collection("users").document(id)
+            .updateData([
+                "fullName": fullName,
+                "username": username
+            ]) { err in
+                if let err = err {
+                    print("DEBUG: Error updating user - \(err.localizedDescription)")
+                    completion(false)
+                } else {
+                    completion(true)
+                }
+            }
+            
+    }
 }
