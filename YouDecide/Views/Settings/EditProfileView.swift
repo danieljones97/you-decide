@@ -8,22 +8,13 @@
 import SwiftUI
 
 struct EditProfileView: View {
+    
     @Environment(\.presentationMode) var presentationMode
-    @State private var showError = false
+    @ObservedObject var viewModel: EditProfileViewModel
     
-    @State private var fullName: String
-    @State private var username: String
-    @State private var email: String
-    private var userId: String
-    
-    init?(user: User) {
-        self.userId = user.id!
-        _fullName = State(initialValue: user.fullName)
-        _username = State(initialValue: user.username)
-        _email = State(initialValue: user.email)
+    init(user: User) {
+        self.viewModel = EditProfileViewModel(user: user)
     }
-
-    let service = UserService()
     
     var body: some View {
         VStack {
@@ -46,7 +37,7 @@ struct EditProfileView: View {
                     .padding()
                 Spacer()
             }
-            CustomInputField(imageName: "person", placeholderText: "", text: $fullName, darkMode: true)
+            CustomInputField(imageName: "person", placeholderText: "", text: $viewModel.fullName, darkMode: true)
                 .padding(.horizontal)
             
             HStack {
@@ -54,7 +45,7 @@ struct EditProfileView: View {
                     .padding()
                 Spacer()
             }
-            CustomInputField(imageName: "at", placeholderText: "", text: $username, darkMode: true)
+            CustomInputField(imageName: "at", placeholderText: "", text: $viewModel.username, darkMode: true)
                 .padding(.horizontal)
             
             HStack {
@@ -62,14 +53,14 @@ struct EditProfileView: View {
                     .padding()
                 Spacer()
             }
-            CustomInputField(imageName: "person", placeholderText: "", text: $email, darkMode: true)
+            CustomInputField(imageName: "person", placeholderText: "", text: $viewModel.email, darkMode: true)
                 .disabled(true)
                 .padding(.horizontal)
             
             Spacer()
             
             Button {
-                save()
+                viewModel.save()
             } label: {
                 Text("Save")
                     .font(.headline)
@@ -80,30 +71,23 @@ struct EditProfileView: View {
                     .padding()
             }
         }
-        .alert("Error", isPresented: $showError, actions: {
+        .alert("Error", isPresented: $viewModel.showError, actions: {
             Button(role: .cancel) { } label: {
                 Text("Dismiss")
             }
         }, message: {
             Text("Unable to save user, please try again later")
         })
+        .onReceive(viewModel.$didUpdateUser) { success in
+            if success {
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
         .background(Color.black)
         .foregroundColor(.white)
         .preferredColorScheme(.dark)
         
     }
-    
-    func save() {
-        service.updateUser(id: userId, username: username, email: email, fullName: fullName) { success in
-            if success {
-                presentationMode.wrappedValue.dismiss()
-            } else {
-                showError = true
-            }
-        }
-    }
-    
-    
 }
 
 struct EditProfileView_Previews: PreviewProvider {

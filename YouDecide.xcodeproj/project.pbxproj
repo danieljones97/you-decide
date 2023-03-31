@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		921D7C65298951D8000F51D9 /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921D7C64298951D8000F51D9 /* RoundedShape.swift */; };
+		922BAAED29D70108006D9D85 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922BAAEC29D70108006D9D85 /* EditProfileViewModel.swift */; };
 		922BCC3B28F7415300989AEE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922BCC3A28F7415300989AEE /* ProfileView.swift */; };
 		922CB85029B94801009A57EC /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922CB84F29B94801009A57EC /* ProfileViewModel.swift */; };
 		922F62B729CDD56200B27A83 /* FollowListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F62B629CDD56200B27A83 /* FollowListView.swift */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		921D7C64298951D8000F51D9 /* RoundedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
+		922BAAEC29D70108006D9D85 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		922BCC3A28F7415300989AEE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		922CB84F29B94801009A57EC /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		922F62B629CDD56200B27A83 /* FollowListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListView.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 		92E2306D29D4A90700DBB0D2 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				922BAAEC29D70108006D9D85 /* EditProfileViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				927A6AA929B2694700300624 /* PollService.swift in Sources */,
 				925D798528E05D450085C5F6 /* Poll.swift in Sources */,
 				925D797D28DF57AF0085C5F6 /* FeedView.swift in Sources */,
+				922BAAED29D70108006D9D85 /* EditProfileViewModel.swift in Sources */,
 				927A6AB329B5657F00300624 /* FeedViewModel.swift in Sources */,
 				922BCC3B28F7415300989AEE /* ProfileView.swift in Sources */,
 				922F62B729CDD56200B27A83 /* FollowListView.swift in Sources */,
