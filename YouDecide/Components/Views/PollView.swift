@@ -11,7 +11,6 @@ import Firebase
 
 struct PollView: View {
     
-    @State private var showUserVoteList = false
     @ObservedObject var viewModel: PollViewModel
     
     init(poll: Poll) {
@@ -108,9 +107,6 @@ struct PollView: View {
         .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
         .background(.black)
         .foregroundColor(.white)
-        .fullScreenCover(isPresented: $showUserVoteList) {
-            NewPollView()
-        }
             
     }
 }
