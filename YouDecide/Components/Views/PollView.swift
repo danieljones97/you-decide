@@ -86,11 +86,13 @@ struct PollView: View {
                                     }
                                 } else {
                                     ProgressView(value: answer.calculateVotePercentage(voteCount: answer.votes, totalVoteCount: viewModel.poll.totalVoteCount!)).frame(minWidth: UIScreen.main.bounds.size.width/4, maxWidth: .infinity,alignment: .trailing)
-                                    
-                                    Text(String(answer.votes) + " votes").layoutPriority(1)
+
+                                    NavigationLink {
+                                        NavigationLazyView(UserVoteListView(answerId: answer.id!))
+                                    } label: {
+                                        Text(String(answer.votes) + " votes").layoutPriority(1)
+                                    }
                                 }
-
-
                                 
                             }.padding(.vertical, 5)
                                 .animation(Animation.easeIn, value: viewModel.poll.votedAnswer ?? nil)

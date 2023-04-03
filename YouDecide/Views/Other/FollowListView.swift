@@ -45,7 +45,7 @@ struct FollowListView: View {
                 }
             }
             
-            UserListView(users: viewModel.users, followedUsers: viewModel.followedUsers, currentUser: viewModel.user, showFollowButton: true)
+            UserListView(users: viewModel.users, followedUsers: viewModel.followedUsers, currentUser: viewModel.user, showFollowButton: true, showCurrentUser: false)
             
         }.background(Color.black)
             .ignoresSafeArea(.all, edges: [.leading, .trailing])

@@ -10,6 +10,10 @@ import FirebaseFirestoreSwift
 
 struct UserService {
     
+    func fetchCurrentUserId() -> String {
+        return Auth.auth().currentUser?.uid ?? ""
+    }
+    
     func fetchUser(withUid uid: String, completion: @escaping(User) -> Void) {
         Firestore.firestore().collection("users")
             .document(uid)

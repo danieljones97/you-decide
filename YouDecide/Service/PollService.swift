@@ -129,4 +129,16 @@ struct PollService {
         
     }
     
+    func fetchUsersIdsWhoVotedOnAnswer(answerId: String, completion: @escaping([String]) -> Void) {
+        Firestore.firestore().collection("user-votes")
+            .whereField("answerId", isEqualTo: answerId)
+            .getDocuments { snapshot, _ in
+                guard let documents = snapshot?.documents else { return }
+                
+                let users = documents.compactMap({ try? $0.get("userId") as? String })
+
+                completion(users)
+            }
+    }
+    
 }

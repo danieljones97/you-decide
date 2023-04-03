@@ -13,6 +13,7 @@ struct UserListView: View {
     var followedUsers = [String]()
     let currentUser: User
     let showFollowButton: Bool
+    var showCurrentUser = true
     
     var searchedUsers: [User] {
         if searchText.isEmpty {
@@ -35,12 +36,12 @@ struct UserListView: View {
             LazyVStack {
                 
                 ForEach(searchedUsers) { user in
-                    if (user.id != currentUser.id) {
+                    if (user.id != currentUser.id || showCurrentUser) {
                         NavigationLink {
                             ProfileView(user: user)
                                 .navigationBarHidden(true)
                         } label: {
-                            UserRowView(user: user, isFollowing: followedUsers.contains(user.id!), showFollowButton: showFollowButton)
+                            UserRowView(user: user, isFollowing: followedUsers.contains(user.id!), showFollowButton: user.id != currentUser.id)
                         }
                     }
                 }
