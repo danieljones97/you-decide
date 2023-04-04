@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -89,16 +90,59 @@ struct SettingsView: View {
                 
                 
                 Button {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        if UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url)
+                        }
+                    }
+                } label: {
+                    HStack {
+                        Image(systemName: "bell")
+                        Text("Notifications")
+                    }
+                    .padding(.vertical, 8)
+                    Spacer()
+                }
+                .padding(.horizontal)
+                
+                
+                Button {
+                    let content = UNMutableNotificationContent()
+                    content.title = "YouDecide"
+                    content.subtitle = "This is a test notification"
+                    content.sound = UNNotificationSound.default
+                    
+                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+                    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                    
+                    UNUserNotificationCenter.current().add(request)
+                } label: {
+                    HStack {
+                        Image(systemName: "bell.badge.fill")
+                        Text("Send Test Notification")
+                    }
+                    .padding(.vertical, 8)
+                    Spacer()
+                }
+                .padding(.horizontal)
+                
+                
+                Button {
                     authViewModel.signOut()
                 } label: {
                     HStack {
                         Image(systemName: "rectangle.portrait.and.arrow.right")
                         Text("Sign Out")
                     }
-                    .padding(.vertical, 8)
+                    .padding(.top, 30)
+                    
                     Spacer()
                 }
-                .padding()
+                .padding(.horizontal)
+                
+                
+                
+
                 
                 
                 Spacer()
