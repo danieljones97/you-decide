@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 class FeedViewModel: ObservableObject {
     @Published var polls = [Poll]()
@@ -18,6 +19,7 @@ class FeedViewModel: ObservableObject {
     init(currentUserId: String) {
         self.currentUserId = currentUserId
         fetchPolls()
+        checkFcmToken()
     }
     
     func fetchPolls() {
@@ -44,6 +46,18 @@ class FeedViewModel: ObservableObject {
             }
         }
         
+    }
+    
+    func checkFcmToken() {
+        Messaging.messaging().token { token, error in
+            if let error = error {
+                print("DEBUG: Error fetching token - \(error)")
+            } else if let token = token {
+                print("DEBUG: VIEW MODEL - FCM registration token - \(token)")
+                
+                self.userService.updateUserFcmToken(userId: self.currentUserId, token: token)
+            }
+        }
         
     }
 }

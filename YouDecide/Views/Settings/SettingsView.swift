@@ -119,7 +119,7 @@ struct SettingsView: View {
                 } label: {
                     HStack {
                         Image(systemName: "bell.badge.fill")
-                        Text("Send Test Notification")
+                        Text("Send Test Local Notification")
                     }
                     .padding(.vertical, 8)
                     Spacer()

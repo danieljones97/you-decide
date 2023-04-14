@@ -139,4 +139,14 @@ struct UserService {
             }
             
     }
+    
+    func updateUserFcmToken(userId: String, token: String) {
+        Firestore.firestore().collection("users").document(userId)
+            .updateData(["fcmToken": token]) {
+                error in
+                if let error = error {
+                    print("DEBUG: Error updating user FCM token - \(error.localizedDescription)")
+                }
+            }
+    }
 }
