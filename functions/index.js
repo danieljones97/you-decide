@@ -6,7 +6,7 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 admin.initializeApp();
 
-exports.sendNewFollowerNotification = functions.firestore.document("/user-followers/{documentId}")
+exports.sendFollowerNotification = functions.firestore.document("/user-followers/{documentId}")
   .onCreate((snap, context) => {
     const newObject = snap.data();
 
@@ -21,15 +21,44 @@ exports.sendNewFollowerNotification = functions.firestore.document("/user-follow
 
       const payload = {
         notification: {
-          title: "New Follower!",
-          body: "Someone new has followed you! Find out who.",
+          title: "YouDecide",
+          body: "You have a new follower! Come and find out who.",
         }
       };
 
       admin.messaging().sendToDevice(fcmToken, payload);
 
     });
-  });
+});
+
+exports.sendVotedNotification = functions.firestore.document("/user-votes/{documentId}")
+  .onCreate((snap, context) => {
+    const newObject = snap.data();
+
+    functions.logger.log("Sending voted notification", context.params.documentId, newObject);
+
+    const pollId = newObject.pollId;
+
+    return admin.firestore().collection("polls").doc(pollId).get().then(doc => {
+
+      const userId = doc.data().userId;
+
+      return admin.firestore().collection("users").doc(userId).get().then(doc => {
+        const user = doc.data();
+        const fcmToken = user.fcmToken;
+
+        const payload = {
+          notification: {
+            title: "YouDecide",
+            body: "You've had a vote on your poll! Check out the results.",
+          }
+        };
+
+        admin.messaging().sendToDevice(fcmToken, payload);
+      });
+
+    });
+});
 
 exports.testSendPushNotifications = functions.https.onRequest((req, res) => {
   // Daniel's iPhone Device FCM token for testing - changes regularly (expiry)
